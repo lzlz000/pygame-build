@@ -2,7 +2,8 @@
 import pygame
 import random
 #1 配置图片地址
-IMAGE_PATH = 'imgs/'
+IMAGE_PATH = 'assets/imgs/'
+FONT_PATH = 'assets/fonts/'
 #1 设置页面宽高
 scrrr_width=800
 scrrr_height =560
@@ -39,7 +40,7 @@ class Plant(pygame.sprite.Sprite):
 class Sunflower(Plant):
     def __init__(self,x,y):
         super(Sunflower, self).__init__()
-        self.image = pygame.image.load('imgs/sunflower.png')
+        self.image = pygame.image.load(IMAGE_PATH+'sunflower.png')
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -62,7 +63,7 @@ class PeaShooter(Plant):
     def __init__(self,x,y):
         super(PeaShooter, self).__init__()
         # self.image 为一个 surface
-        self.image = pygame.image.load('imgs/peashooter.png')
+        self.image = pygame.image.load(IMAGE_PATH+'peashooter.png')
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -97,7 +98,7 @@ class PeaShooter(Plant):
 class PeaBullet(pygame.sprite.Sprite):
     def __init__(self,peashooter):
         self.live = True
-        self.image = pygame.image.load('imgs/peabullet.png')
+        self.image = pygame.image.load(IMAGE_PATH+'peabullet.png')
         self.damage = 50
         self.speed  = 10
         self.rect = self.image.get_rect()
@@ -140,7 +141,7 @@ class PeaBullet(pygame.sprite.Sprite):
 class Zombie(pygame.sprite.Sprite):
     def __init__(self,x,y):
         super(Zombie, self).__init__()
-        self.image = pygame.image.load('imgs/zombie.png')
+        self.image = pygame.image.load(IMAGE_PATH+'zombie.png')
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -212,7 +213,7 @@ class MainGame():
     #2 文本绘制
     def draw_text(self, content, size, color):
         pygame.font.init()
-        font = pygame.font.SysFont('kaiti', size)
+        font = pygame.font.Font(FONT_PATH+'default.ttf', size)
         text = font.render(content, True, color)
         return text
 
